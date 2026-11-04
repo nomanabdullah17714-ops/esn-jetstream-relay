@@ -1,6 +1,134 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071c20"><meta name="description" content="Fly three illustrated survey routes. Collect signals, dodge storms and bring your score home."><title>Jetstream Relay · ESN Arcade</title><link rel="icon" href="./wing.svg" type="image/svg+xml"><link rel="stylesheet" href="./game.css"><script defer src="./game.js"></script></head><body><header><div class="wrap bar"><strong class="brand"><img src="./wing.svg" alt=""> ESN <span>ARCADE</span></strong><div class="tools"><b class="lamp"></b><span data-t="offline">Solo arcade</span><button id="lang" aria-label="Change language">বাংলা</button></div></div></header>
-<main class="wrap"><div class="intro"><div><small data-t="folio">FIELD SERIES　/　FLIGHT 001</small><h1>Jetstream <em>Relay.</em></h1><p data-t="tag">Fly the signal routes. Bring your findings home.</p></div><span class="stamp">ESN · FLIGHT DIVISION<br>✦　 01 / 03　 ✦</span></div>
-<section class="deck"><div class="cockpit"><div class="strip"><b id="sector"></b><span id="flightState"></span></div><div class="sky"><canvas id="sky" width="960" height="420" role="img" aria-label="Flight course with three altitude lanes"></canvas><div class="overlay" id="overlay"><span id="eyebrow"></span><strong id="callout"></strong></div></div><div class="metrics"><div><small data-t="score">FLIGHT SCORE</small><strong id="score">0</strong></div><div><small data-t="combo">SIGNAL COMBO</small><strong id="combo">1×</strong></div><div><small data-t="hull">AIRFRAME</small><strong id="hull">◆◆◆</strong></div><div><small data-t="gates">GATES</small><strong id="gates">0 / 12</strong></div></div><div class="controls"><button id="launch" class="primary"></button><button id="up" aria-label="Climb">↑</button><button id="down" aria-label="Descend">↓</button><button id="pause"></button></div><p id="message" aria-live="polite"></p></div>
-<aside><small data-t="dispatch">01　/　DISPATCH</small><h2 data-t="routes">Select a route</h2><div id="routes"></div><label class="daily"><input id="daily" type="checkbox"><span><b data-t="daily">Daily course</b><small data-t="dailySub">A repeatable course for today (UTC)</small></span></label><div class="record"><small data-t="record">PERSONAL BEST</small><b id="best">0</b></div></aside></section>
-<section class="brief"><div><small data-t="manual">02　/　FLIGHT MANUAL</small><h2 data-t="mission">Your mission</h2></div><div><b data-t="guide1">01　Follow the rings</b><p data-t="detail1">Use ↑ and ↓ or the arrow buttons to change altitude. Fly through bright rings to build a combo.</p></div><div><b data-t="guide2">02　Read the weather</b><p data-t="detail2">Striped storm cells cost one hull point. An empty lane is safe, but breaks your combo.</p></div><div><b data-t="guide3">03　Land your score</b><p data-t="detail3">Land after the first gate or finish the route. Lose all three hull points and the flight scores zero.</p></div></section></main>
-<footer class="wrap"><span>ESN ARCADE　/　JETSTREAM RELAY</span><button id="privacy"></button></footer><dialog id="notice"><h2 id="noticeTitle"></h2><p id="noticeBody"></p><form method="dialog"><button id="close"></button></form></dialog></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#071c20" />
+    <meta
+      name="description"
+      content="Fly three illustrated survey routes. Collect signals, dodge storms and bring your score home."
+    />
+    <title>Jetstream Relay · ESN Arcade</title>
+    <link rel="icon" href="./wing.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./game.css" />
+    <script defer src="./game.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <strong class="brand"
+          ><img src="./wing.svg" alt="" /> ESN <span>ARCADE</span></strong
+        >
+        <div class="tools">
+          <b class="lamp"></b><span data-t="offline">Solo arcade</span
+          ><button id="lang" aria-label="Change language">বাংলা</button>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <div class="intro">
+        <div>
+          <small data-t="folio">FIELD SERIES　/　FLIGHT 001</small>
+          <h1>Jetstream <em>Relay.</em></h1>
+          <p data-t="tag">Fly the signal routes. Bring your findings home.</p>
+        </div>
+        <span class="stamp">ESN · FLIGHT DIVISION<br />✦　 01 / 03　 ✦</span>
+      </div>
+      <section class="deck">
+        <div class="cockpit">
+          <div class="strip">
+            <b id="sector"></b><span id="flightState"></span>
+          </div>
+          <div class="sky">
+            <canvas
+              id="sky"
+              width="960"
+              height="420"
+              role="img"
+              aria-label="Flight course with three altitude lanes"
+            ></canvas>
+            <div class="overlay" id="overlay">
+              <span id="eyebrow"></span><strong id="callout"></strong>
+            </div>
+          </div>
+          <div class="metrics">
+            <div>
+              <small data-t="score">FLIGHT SCORE</small
+              ><strong id="score">0</strong>
+            </div>
+            <div>
+              <small data-t="combo">SIGNAL COMBO</small
+              ><strong id="combo">1×</strong>
+            </div>
+            <div>
+              <small data-t="hull">AIRFRAME</small
+              ><strong id="hull">◆◆◆</strong>
+            </div>
+            <div>
+              <small data-t="gates">GATES</small
+              ><strong id="gates">0 / 12</strong>
+            </div>
+          </div>
+          <div class="controls">
+            <button id="launch" class="primary"></button
+            ><button id="up" aria-label="Climb">↑</button
+            ><button id="down" aria-label="Descend">↓</button
+            ><button id="pause"></button>
+          </div>
+          <p id="message" aria-live="polite"></p>
+        </div>
+        <aside>
+          <small data-t="dispatch">01　/　DISPATCH</small>
+          <h2 data-t="routes">Select a route</h2>
+          <div id="routes"></div>
+          <label class="daily"
+            ><input id="daily" type="checkbox" /><span
+              ><b data-t="daily">Daily course</b
+              ><small data-t="dailySub"
+                >A repeatable course for today (UTC)</small
+              ></span
+            ></label
+          >
+          <div class="record">
+            <small data-t="record">PERSONAL BEST</small><b id="best">0</b>
+          </div>
+        </aside>
+      </section>
+      <section class="brief">
+        <div>
+          <small data-t="manual">02　/　FLIGHT MANUAL</small>
+          <h2 data-t="mission">Your mission</h2>
+        </div>
+        <div>
+          <b data-t="guide1">01　Follow the rings</b>
+          <p data-t="detail1">
+            Use ↑ and ↓ or the arrow buttons to change altitude. Fly through
+            bright rings to build a combo.
+          </p>
+        </div>
+        <div>
+          <b data-t="guide2">02　Read the weather</b>
+          <p data-t="detail2">
+            Striped storm cells cost one hull point. An empty lane is safe, but
+            breaks your combo.
+          </p>
+        </div>
+        <div>
+          <b data-t="guide3">03　Land your score</b>
+          <p data-t="detail3">
+            Land after the first gate or finish the route. Lose all three hull
+            points and the flight scores zero.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap">
+      <span>ESN ARCADE　/　JETSTREAM RELAY</span><button id="privacy"></button>
+    </footer>
+    <dialog id="notice">
+      <h2 id="noticeTitle"></h2>
+      <p id="noticeBody"></p>
+      <form method="dialog"><button id="close"></button></form>
+    </dialog>
+  </body>
+</html>
